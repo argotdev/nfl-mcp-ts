@@ -1,0 +1,42 @@
+# Node modules and build artifacts
+node_modules/
+dist/
+*.log
+npm-debug.log*
+
+# Development files
+.git/
+.gitignore
+.env
+.env.local
+.env.*.local
+*.md
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Don't ignore database files - they need to be copied into the image
+# *.db
+# *.sqlite
+# *.sqlite3
+# data/
+
+# Docker files (prevent recursive copy)
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Test files
+coverage/
+.nyc_output/
+*.test.ts
+*.spec.ts
+__tests__/
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml

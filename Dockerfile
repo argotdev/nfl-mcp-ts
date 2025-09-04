@@ -40,6 +40,10 @@ COPY --from=builder /app/dist ./dist
 # Create directory for database files
 RUN mkdir -p /data
 
+# Copy database files into the container
+# These need to be in the same directory as the Dockerfile
+COPY *.db /data/
+
 # Set environment variables with default paths
 ENV TEAM_STATS_DB=/data/nfl_stats.db \
     PLAYS_DB=/data/nfl_plays.db \

@@ -1,0 +1,126 @@
+name: nfl-comprehensive
+version: 1.0.0
+description: NFL Comprehensive MCP Server - Provides NFL statistics, game scores, and play data
+author: Your Name
+license: MIT
+
+mcp:
+  version: 1.0.0
+
+build:
+  type: docker
+  dockerfile: Dockerfile
+
+runtime:
+  type: stdio
+
+tools:
+  - name: get_databases_overview
+    description: Get an overview of all available NFL databases and their contents
+    
+  - name: get_team_stats
+    description: Get detailed statistics for a specific NFL team
+    parameters:
+      team:
+        type: string
+        description: Team abbreviation (e.g., 'BUF', 'KC', 'GB')
+        required: true
+      season:
+        type: number
+        description: Season year
+        required: false
+      season_type:
+        type: string
+        description: Season type - 'REG' for regular season, 'POST' for postseason
+        default: REG
+        required: false
+    
+  - name: get_game_plays
+    description: Get all plays from a specific game
+    parameters:
+      away_team:
+        type: string
+        description: Away team abbreviation
+        required: true
+      home_team:
+        type: string
+        description: Home team abbreviation
+        required: true
+      season:
+        type: number
+        description: Season year
+        required: true
+      week:
+        type: string
+        description: Week number or description
+        required: false
+    
+  - name: get_game_score
+    description: Get the final score and details for a specific game
+    parameters:
+      away_team:
+        type: string
+        description: Away team abbreviation
+        required: true
+      home_team:
+        type: string
+        description: Home team abbreviation
+        required: true
+      season:
+        type: number
+        description: Season year
+        required: true
+      week:
+        type: string
+        description: Week number or description
+        required: false
+    
+  - name: search_plays_by_outcome
+    description: Search for plays by their outcome (e.g., Touchdown, Interception)
+    parameters:
+      play_outcome:
+        type: string
+        description: Type of play outcome to search for
+        required: true
+      season:
+        type: number
+        description: Limit to specific season
+        required: false
+      team:
+        type: string
+        description: Limit to plays involving specific team
+        required: false
+      limit:
+        type: number
+        description: Maximum number of results to return
+        default: 20
+        required: false
+    
+  - name: get_team_season_record
+    description: Get a team's complete season record including all games
+    parameters:
+      team:
+        type: string
+        description: Team abbreviation
+        required: true
+      season:
+        type: number
+        description: Season year
+        required: true
+    
+  - name: get_playoff_results
+    description: Get playoff results for a specific season
+    parameters:
+      season:
+        type: number
+        description: Season year
+        required: true
+      round_name:
+        type: string
+        description: Specific playoff round (Wild Card, Divisional, Conference, Super Bowl)
+        required: false
+
+requirements:
+  - Database files (nfl_stats.db, nfl_plays.db, nfl_scores.db) must be present in the build context
+  - Node.js 20+
+  - SQLite3 compatible databases

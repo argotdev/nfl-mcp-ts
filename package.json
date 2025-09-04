@@ -4,6 +4,7 @@
     "description": "NFL Comprehensive MCP Server - Provides NFL statistics, game scores, and play data",
     "type": "module",
     "main": "dist/index.js",
+    "module": "./src/index.ts",
     "scripts": {
       "build": "tsc",
       "start": "node dist/index.js",

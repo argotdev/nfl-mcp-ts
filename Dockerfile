@@ -53,11 +53,10 @@ ENV TEAM_STATS_DB=/data/nfl_stats.db \
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
     CMD node -e "console.log('Health check passed')" || exit 1
 
-# Run as non-root user
-RUN adduser -D -u 1000 nflserver && \
-    chown -R nflserver:nflserver /app /data
+# Run as non-root user (use existing node user)
+RUN chown -R node:node /app /data
 
-USER nflserver
+USER node
 
 # Default command
 ENTRYPOINT ["node", "dist/index.js"]

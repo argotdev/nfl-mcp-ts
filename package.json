@@ -1,39 +1,30 @@
 {
-    "name": "nfl-mcp-server",
-    "version": "1.0.0",
-    "description": "NFL Comprehensive MCP Server - Provides NFL statistics, game scores, and play data",
-    "type": "module",
-    "main": "dist/index.js",
-    "module": "./src/index.ts",
-    "scripts": {
-      "build": "tsc",
-      "start": "node dist/index.js",
-      "dev": "tsx src/index.ts",
-      "clean": "rm -rf dist",
-      "typecheck": "tsc --noEmit"
-    },
-    "dependencies": {
-      "@modelcontextprotocol/sdk": "^0.5.0",
-      "better-sqlite3": "^11.0.0",
-      "zod": "^3.22.0",
-      "zod-to-json-schema": "^3.22.0"
-    },
-    "devDependencies": {
-      "@types/better-sqlite3": "^7.6.0",
-      "@types/node": "^20.0.0",
-      "tsx": "^4.0.0",
-      "typescript": "^5.0.0"
-    },
-    "engines": {
-      "node": ">=18.0.0"
-    },
-    "keywords": [
-      "nfl",
-      "mcp",
-      "model-context-protocol",
-      "sports",
-      "statistics"
-    ],
-    "author": "",
-    "license": "MIT"
+  "name": "nfl-live-mcp-server",
+  "version": "1.0.0",
+  "description": "A comprehensive MCP server that provides tools to query NFL historical data from SQLite databases and live data from ESPN's API",
+  "main": "dist/server.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "tsx src/server.ts",
+    "clean": "rm -rf dist"
+  },
+  "keywords": ["mcp", "nfl", "espn", "sports", "api"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "sqlite3": "^5.1.7",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.5",
+    "@types/sqlite3": "^3.1.11",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
+}
